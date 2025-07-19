@@ -29,7 +29,7 @@ exports.login = async (req, res) => {
 
 exports.logout = (req, res) => {
     try {
-        return res.clearCookie('clientToken').redirect('/login')
+        return res.clearCookie('clientToken').redirect('/')
     } catch (error) {
         console.log(error)
     }
