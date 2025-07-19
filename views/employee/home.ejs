@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Employee</title>
+    <link rel="shortcut icon" href="/image/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/datatable/datatable.css">
+    <link rel="stylesheet" href="/css/all.css">
+    <style>
+        .wrapper {
+            width: 100%;
+            background: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="container-xxl">
+            <div class="mt-4 w-100 d-flex justify-content-end align-items-center">
+                <a href="/employee/logout" class="delete-anchor py-2 px-5">Logout</a>
+            </div>
+            <ul class="mt-4 list-group list-group-horizontal w-100 rounded-0">
+                <li class="list-group-item w-40 rounded-0 py-3 fw-semibold">Name</li>
+                <li class="list-group-item w-60 rounded-0 py-3 fw-semibold"><%=employee.name%></li>
+            </ul>
+            <ul class="list-group list-group-horizontal w-100 rounded-0">
+                <li class="list-group-item w-40 rounded-0 py-3 fw-semibold">Username</li>
+                <li class="list-group-item w-60 rounded-0 py-3 fw-semibold"><%=employee.username%></li>
+            </ul>
+            <ul class="list-group list-group-horizontal w-100 rounded-0">
+                <li class="list-group-item w-40 rounded-0 py-3 fw-semibold">Designation</li>
+                <li class="list-group-item w-60 rounded-0 py-3 fw-semibold"><%=employee.designation%></li>
+            </ul>
+            <ul class="list-group list-group-horizontal w-100 rounded-0">
+                <li class="list-group-item w-40 rounded-0 py-3 fw-semibold">Contact Number</li>
+                <li class="list-group-item w-60 rounded-0 py-3 fw-semibold"><%=employee.contactNumber%></li>
+            </ul>
+            <div class="my-4 w-100 overflow-x-scroll">
+                <table id="worksTable" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>SL.No</th>
+                            <th>Client</th>
+                            <th>Subject</th>
+                            <th>Urgency</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>View</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% work.forEach((i, index)=>{ %>
+                        <tr>
+                            <td><%=index+1%></td>
+                            <td><%=i.client.name%></td>
+                            <td><%=i.subject%></td>
+                            <td><%=i.urgency%></td>
+                            <td><%=i.date%></td>
+                            <td><%=i.status%></td>
+                            <td>
+                                <a href="/employee/<%=i.id%>/view" class="view-profile-anchor">View</a>
+                            </td>
+                        </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="/js/script.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.js"></script>
+    <script src="/datatable/datatable.js"></script>
+    <script src="/datatable/datatable.bootstrap.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            new DataTable('#worksTable');
+        })
+    </script>
+</body>
+
+</html>

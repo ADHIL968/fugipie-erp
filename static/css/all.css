@@ -1,0 +1,322 @@
+@import url('https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@100..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+:root {
+    --color-1: #8e07e1;
+    --color-2: #d900dd;
+    --open-button-color: #0d6efd;
+    --close-button-color: #dc3545;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    transition: .10s ease-in-out;
+    font-family: Montserrat;
+}
+
+/* text */
+
+.heading-black {
+    padding: 0;
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-top: 1rem;
+    margin-bottom: .6rem;
+    color: black;
+    font-family: Montserrat, Anek Malayalam;
+}
+
+.heading-white {
+    padding: 0;
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-top: 1rem;
+    margin-bottom: .6rem;
+    color: white;
+    font-family: Montserrat, Anek Malayalam;
+}
+
+.subheading-black {
+    padding: 0;
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-top: 1rem;
+    margin-bottom: .6rem;
+    color: black;
+    font-family: Montserrat, Anek Malayalam;
+}
+
+.subheading-white {
+    padding: 0;
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-top: 1rem;
+    margin-bottom: .6rem;
+    color: white;
+    font-family: Montserrat, Anek Malayalam;
+}
+
+.text-black {
+    padding: 0;
+    margin: 0;
+    font-size: 1rem;
+    color: black;
+    font-family: Quicksand, Raleway, Open Sans;
+}
+
+.text-white {
+    padding: 0;
+    margin: 0;
+    font-size: 1rem;
+    color: white;
+    font-family: Quicksand, Raleway, Open Sans;
+}
+
+@media (max-width: 768px) {
+    .heading-black {
+        font-size: 2.2rem;
+    }
+
+    .subheading-black {
+        font-size: 1.6rem;
+    }
+
+    .text-black {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .heading-black {
+        font-size: 1.8rem;
+    }
+
+    .subheading-black {
+        font-size: 1.4rem;
+    }
+
+    .text-black {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+}
+
+/* text end */
+
+/* loader */
+.loaderContainer {
+    width: 100%;
+    height: 100dvh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 101;
+}
+
+.loader {
+    width: 70px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 8px solid lime;
+    animation:
+        l20-1 .9s infinite linear alternate,
+        l20-2 1.8s infinite linear;
+}
+
+@keyframes l20-1 {
+    0% {
+        clip-path: polygon(50% 50%, 0 0, 50% 0%, 50% 0%, 50% 0%, 50% 0%, 50% 0%)
+    }
+
+    12.5% {
+        clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 0%, 100% 0%, 100% 0%)
+    }
+
+    25% {
+        clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 100%, 100% 100%, 100% 100%)
+    }
+
+    50% {
+        clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100%)
+    }
+
+    62.5% {
+        clip-path: polygon(50% 50%, 100% 0, 100% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100%)
+    }
+
+    75% {
+        clip-path: polygon(50% 50%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 50% 100%, 0% 100%)
+    }
+
+    100% {
+        clip-path: polygon(50% 50%, 50% 100%, 50% 100%, 50% 100%, 50% 100%, 50% 100%, 0% 100%)
+    }
+}
+
+@keyframes l20-2 {
+    0% {
+        transform: scaleY(1) rotate(0deg)
+    }
+
+    49.99% {
+        transform: scaleY(1) rotate(135deg)
+    }
+
+    50% {
+        transform: scaleY(-1) rotate(0deg)
+    }
+
+    100% {
+        transform: scaleY(-1) rotate(-135deg)
+    }
+}
+
+/* loader end */
+
+.modal-open-button {
+    border: none;
+    outline: none;
+    padding: 5px 20px;
+    text-align: center;
+    background: var(--open-button-color);
+    color: white;
+    border-radius: 3px;
+    text-decoration: none;
+
+    &:hover {
+        background: #0955c8;
+    }
+}
+
+.modal-close-button {
+    border: none;
+    outline: none;
+    padding: 5px 20px;
+    text-align: center;
+    background: var(--close-button-color);
+    color: white;
+    border-radius: 3px;
+
+    &:hover {
+        background: #b82c3a;
+    }
+}
+
+.modal-save-button {
+    border: none;
+    outline: none;
+    padding: 5px 20px;
+    text-align: center;
+    background: green;
+    color: white;
+    border-radius: 3px;
+    text-decoration: none;
+
+    &:hover {
+        background: rgb(0, 85, 0);
+    }
+}
+
+.view-profile-anchor {
+    display: block;
+    width: max-content;
+    text-decoration: none;
+    color: white;
+    background: green;
+    padding: 5px 15px;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+}
+
+.delete-anchor {
+    display: block;
+    width: max-content;
+    text-decoration: none;
+    color: white;
+    background: var(--close-button-color);
+    padding: 5px 15px;
+    border-radius: 3px;
+
+    &:hover {
+        background: #b82c3a;
+    }
+}
+
+.delete-button {
+    display: block;
+    width: max-content;
+    text-decoration: none;
+    color: black;
+    background: white;
+    border: 1px solid var(--close-button-color);
+    outline: none;
+    padding: 5px 15px;
+    border-radius: 3px;
+}
+
+th,
+td {
+    text-align: start !important;
+    padding: 15px !important;
+}
+
+.w-40 {
+    width: 40%;
+}
+
+.w-60 {
+    width: 60%;
+}
+
+.date-input {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    border: 1px solid silver;
+    border-radius: 3px;
+}
+
+
+.header-container {
+    padding: 12px;
+    width: 100%;
+    background: #640D5F;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 3px;
+    margin-top: 10px;
+}
+
+.header {
+    color: white;
+    font-weight: 600;
+    letter-spacing: 3px;
+    font-size: 22px;
+    margin: 0;
+    padding: 0;
+}

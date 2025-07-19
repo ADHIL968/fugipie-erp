@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Works | Admin</title>
+    <link rel="shortcut icon" href="/image/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/all.css">
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="container-xxl">
+            <div class="mt-4 w-100 d-flex justify-content-between align-items-center">
+                <a href="/employee" class="modal-open-button py-2 px-5">Go back</a>
+                <a href="/employee/logout" class="delete-anchor py-2 px-5">Logout</a>
+            </div>
+            <div class="header-container">
+                <p class="header">View Work</p>
+            </div>
+            <ul class="mt-4 list-group list-group-horizontal w-100 rounded-0">
+                <li class="list-group-item w-40 py-3 rounded-0 d-flex align-items-center">Client</li>
+                <li class="list-group-item w-60 py-3 rounded-0">
+                    <%=work.client.name%>
+                </li>
+            </ul>
+            <ul class="list-group list-group-horizontal w-100 rounded-0">
+                <li class="list-group-item w-40 py-3 rounded-0 d-flex align-items-center">Subject</li>
+                <li class="list-group-item w-60 py-3 rounded-0">
+                    <%=work.subject%>
+                </li>
+            </ul>
+            <ul class="list-group list-group-horizontal w-100 rounded-0">
+                <li class="list-group-item w-40 py-3 rounded-0 d-flex align-items-center">Urgency</li>
+                <li class="list-group-item w-60 py-3 rounded-0">
+                    <%=work.urgency%>
+                </li>
+            </ul>
+            <ul class="list-group list-group-horizontal w-100 rounded-0">
+                <li class="list-group-item w-40 py-3 rounded-0 d-flex align-items-center">Description</li>
+                <li class="list-group-item w-60 py-3 rounded-0">
+                    <%=work.description%>
+                </li>
+            </ul>
+            <ul class="list-group list-group-horizontal w-100 rounded-0">
+                <li class="list-group-item w-40 py-3 rounded-0 d-flex align-items-center">Attachment</li>
+                <% if(work.attachment){ %>
+                <li class="list-group-item w-60 py-3 rounded-0">
+                    <a href="<%=work.attachment%>" target="_blank">view attachment</a>
+                </li>
+                <% }else{ %>
+                <li class="list-group-item w-60 py-3 rounded-0">no attachment</li>
+                <% } %>
+            </ul>
+            <ul class="list-group list-group-horizontal w-100 rounded-0">
+                <li class="list-group-item w-40 py-3 rounded-0 d-flex align-items-center">Date</li>
+                <li class="list-group-item w-60 py-3 rounded-0">
+                    <%=work.date%>
+                </li>
+            </ul>
+            <ul class="list-group list-group-horizontal w-100 rounded-0">
+                <li class="list-group-item w-40 py-3 rounded-0 d-flex align-items-center">Deleted</li>
+                <li class="list-group-item w-60 py-3 rounded-0">
+                    <%=work.deleted%>
+                </li>
+            </ul>
+            <ul class="list-group list-group-horizontal w-100 rounded-0">
+                <li class="list-group-item w-40 py-3 rounded-0 d-flex align-items-center">Status</li>
+                <li class="list-group-item w-60 py-3 rounded-0">
+                    <%=work.status%>
+                </li>
+            </ul>
+            <ul class="list-group list-group-horizontal w-100 rounded-0">
+                <li class="list-group-item w-40 py-3 rounded-0 d-flex align-items-center">Time</li>
+                <% if(work.time){ %>
+                <li class="list-group-item w-60 py-3 rounded-0">
+                    <%=work.time%> min
+                </li>
+                <% }else{ %>
+                <li class="list-group-item w-60 py-3 rounded-0">ongoing</li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+
+    <script src="/js/script.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

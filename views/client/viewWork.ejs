@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work | Client</title>
+    <link rel="shortcut icon" href="/image/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/all.css">
+    <link rel="stylesheet" href="/css/client.css">
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="container-xxl">
+            <div class="mt-4 w-100 d-flex justify-content-between align-items-center">
+                <a href="/home" class="modal-open-button py-2 px-5">Go back</a>
+                <a href="/logout" class="delete-anchor py-2 px-5">Logout</a>
+            </div>
+            <ul class="mt-4 list-group list-group-horizontal w-100 rounded-0">
+                <li class="list-group-item w-40 py-3 rounded-0 d-flex align-items-center">Work Id</li>
+                <li class="list-group-item w-60 py-3 rounded-0"><%=work.id%></li>
+            </ul>
+            <ul class="list-group list-group-horizontal w-100 rounded-0">
+                <li class="list-group-item w-40 py-3 rounded-0 d-flex align-items-center">Subject</li>
+                <li class="list-group-item w-60 py-3 rounded-0"><%=work.subject%></li>
+            </ul>
+            <ul class="list-group list-group-horizontal w-100 rounded-0">
+                <li class="list-group-item w-40 py-3 rounded-0 d-flex align-items-center">Description</li>
+                <li class="list-group-item w-60 py-3 rounded-0"><%=work.description%></li>
+            </ul>
+            <ul class="list-group list-group-horizontal w-100 rounded-0">
+                <li class="list-group-item w-40 py-3 rounded-0 d-flex align-items-center">Urgency</li>
+                <li class="list-group-item w-60 py-3 rounded-0"><%=work.urgency%></li>
+            </ul>
+            <ul class="list-group list-group-horizontal w-100 rounded-0">
+                <li class="list-group-item w-40 py-3 rounded-0 d-flex align-items-center">Attachment</li>
+                <% if(work.attachment){ %>
+                <li class="list-group-item w-60 py-3 rounded-0">
+                    <a href="<%=work.attachment%>" target="_blank">view attachment</a>
+                </li>
+                <% }else{ %>
+                <li class="list-group-item w-60 py-3 rounded-0">no attachment</li>
+                <% } %>
+            </ul>
+            <ul class="list-group list-group-horizontal w-100 rounded-0">
+                <li class="list-group-item w-40 py-3 rounded-0 d-flex align-items-center">Date</li>
+                <li class="list-group-item w-60 py-3 rounded-0"><%=work.date%></li>
+            </ul>
+            <ul class="list-group list-group-horizontal w-100 rounded-0">
+                <li class="list-group-item w-40 py-3 rounded-0 d-flex align-items-center">Status</li>
+                <li class="list-group-item w-60 py-3 rounded-0"><%=work.status%></li>
+            </ul>
+            <% if(work.deleted){ %>
+            <ul class="list-group list-group-horizontal w-100 rounded-0">
+                <li class="list-group-item w-40 py-3 rounded-0 d-flex align-items-center">Delete</li>
+                <li class="list-group-item w-60 py-3 rounded-0">work deleted</li>
+            </ul>
+            <% }else if(work.status == "requested"){ %>
+            <ul class="list-group list-group-horizontal w-100 rounded-0">
+                <li class="list-group-item w-40 py-3 rounded-0 d-flex align-items-center">Delete</li>
+                <li class="list-group-item w-60 py-3 rounded-0">
+                    <a href="/<%=work.id%>/deletework" class="delete-anchor">delete work</a>
+                </li>
+            </ul>
+            <% }else if(work.status == "completed"){ %>
+            <ul class="list-group list-group-horizontal w-100 rounded-0">
+                <li class="list-group-item w-40 py-3 rounded-0 d-flex align-items-center">Completion Date</li>
+                <li class="list-group-item w-60 py-3 rounded-0"><%=work.completion.date%></li>
+            </ul>
+            <ul class="list-group list-group-horizontal w-100 rounded-0">
+                <li class="list-group-item w-40 py-3 rounded-0 d-flex align-items-center">Time ( in min )</li>
+                <li class="list-group-item w-60 py-3 rounded-0"><%=work.time%></li>
+            </ul>
+            <ul class="list-group list-group-horizontal w-100 rounded-0">
+                <li class="list-group-item w-40 py-3 rounded-0 d-flex align-items-center">Amount</li>
+                <li class="list-group-item w-60 py-3 rounded-0">₹ <%=work.amount%></li>
+            </ul>
+            <% } %>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="addWorkModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Add New Work</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/addwork" method="post" class="w-100" enctype="multipart/form-data">
+                        <div class="row w-100 gx-0 gy-3 m-0 p-0">
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" placeholder="Subject" name="subject" required>
+                                    <label>Subject</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control" placeholder="Describe the work" name="description" style="height: 150px" required></textarea>
+                                    <label>Describe the work</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <select class="form-select" name="urgency" required>
+                                        <option value="" selected>select your urgency</option>
+                                        <option value="high">High</option>
+                                        <option value="moderate">Moderate</option>
+                                        <option value="low">Low</option>
+                                    </select>
+                                    <label>Urgency</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" placeholder="Attachment" name="attachment">
+                                    <label>Attachment</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 w-100 d-flex align-items-center justify-content-end gap-3">
+                            <button type="button" class="modal-close-button" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="modal-save-button">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="/js/script.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clients | Admin</title>
+    <link rel="shortcut icon" href="/image/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/datatable/datatable.css">
+    <link rel="stylesheet" href="/css/all.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="sidebar"></div>
+        <div class="content">
+            <div class="container-xxl">
+                <div class="header-container">
+                    <p class="header">Clients</p>
+                </div>
+                <div class="mt-4 w-100 d-flex align-items-center justify-content-center">
+                    <button type="button" class="modal-open-button" data-bs-toggle="modal" data-bs-target="#addClientModal">Add New Client</button>
+                </div>
+                <div class="mt-4 w-100 overflow-x-scroll">
+                    <table id="clientTable" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>SL.No</th>
+                                <th>Client</th>
+                                <th>Contact Person</th>
+                                <th>Contact Number</th>
+                                <th>Username</th>
+                                <th>View Profile</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% client.forEach((i, index)=>{ %>
+                            <tr>
+                                <td><%=index+1%></td>
+                                <td><%=i.name%></td>
+                                <td><%=i.contactPerson%></td>
+                                <td><%=i.contactNumber%></td>
+                                <td><%=i.username%></td>
+                                <td><a href="/admin/clients/<%=i.id%>/profile" class="view-profile-anchor">View Profile</a></td>
+                            </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addClientModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Add New Client</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/admin/clients/addclient" method="post" class="w-100">
+                        <div class="row w-100 gx-0 gy-3 m-0 p-0">
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" name="name" placeholder="Name" required>
+                                    <label>Name</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" name="contactPerson" placeholder="Contact Person" required>
+                                    <label>Contact Person</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" name="contactNumber" placeholder="Contact Number" required>
+                                    <label>Contact Number</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" name="username" placeholder="Username" required>
+                                    <label>Username</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="password" class="form-control" name="password" placeholder="Username" required>
+                                    <label>Password</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 w-100 d-flex align-items-center justify-content-end gap-3">
+                            <button type="button" class="modal-close-button" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="modal-save-button">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/adminNavbar.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.js"></script>
+    <script src="/datatable/datatable.js"></script>
+    <script src="/datatable/datatable.bootstrap.js"></script>
+    <script>
+        let navActive = document.querySelectorAll('.admin-clients')
+        document.addEventListener("DOMContentLoaded", () => {
+            new DataTable('#clientTable');
+        })
+        navActive.forEach((i) => {
+            i.classList.add('active')
+        })
+    </script>
+</body>
+
+</html>

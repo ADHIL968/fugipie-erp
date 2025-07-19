@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Works | Admin</title>
+    <link rel="shortcut icon" href="/image/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/datatable/datatable.css">
+    <link rel="stylesheet" href="/css/all.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="sidebar"></div>
+        <div class="content">
+            <div class="container-xxl">
+                <div class="header-container">
+                    <p class="header">Work</p>
+                </div>
+                <ul class="mt-4 list-group list-group-horizontal w-100 rounded-0">
+                    <li class="list-group-item w-40 py-3 rounded-0 d-flex align-items-center">Client</li>
+                    <li class="list-group-item w-60 py-3 rounded-0">
+                        <%=work.client.name%>
+                    </li>
+                </ul>
+                <ul class="list-group list-group-horizontal w-100 rounded-0">
+                    <li class="list-group-item w-40 py-3 rounded-0 d-flex align-items-center">Subject</li>
+                    <li class="list-group-item w-60 py-3 rounded-0">
+                        <%=work.subject%>
+                    </li>
+                </ul>
+                <ul class="list-group list-group-horizontal w-100 rounded-0">
+                    <li class="list-group-item w-40 py-3 rounded-0 d-flex align-items-center">Urgency</li>
+                    <li class="list-group-item w-60 py-3 rounded-0">
+                        <%=work.urgency%>
+                    </li>
+                </ul>
+                <ul class="list-group list-group-horizontal w-100 rounded-0">
+                    <li class="list-group-item w-40 py-3 rounded-0 d-flex align-items-center">Description</li>
+                    <li class="list-group-item w-60 py-3 rounded-0">
+                        <%=work.description%>
+                    </li>
+                </ul>
+                <ul class="list-group list-group-horizontal w-100 rounded-0">
+                    <li class="list-group-item w-40 py-3 rounded-0 d-flex align-items-center">Attachment</li>
+                    <% if(work.attachment){ %>
+                    <li class="list-group-item w-60 py-3 rounded-0">
+                        <a href="<%=work.attachment%>" target="_blank">view attachment</a>
+                    </li>
+                    <% }else{ %>
+                    <li class="list-group-item w-60 py-3 rounded-0">no attachment</li>
+                    <% } %>
+                </ul>
+                <ul class="list-group list-group-horizontal w-100 rounded-0">
+                    <li class="list-group-item w-40 py-3 rounded-0 d-flex align-items-center">Date</li>
+                    <li class="list-group-item w-60 py-3 rounded-0">
+                        <%=work.date%>
+                    </li>
+                </ul>
+                <ul class="list-group list-group-horizontal w-100 rounded-0">
+                    <li class="list-group-item w-40 py-3 rounded-0 d-flex align-items-center">Assigned Employee</li>
+                    <% if(work.assignedEmployee.name){ %>
+                    <li class="list-group-item w-60 py-3 rounded-0">
+                        <%=work.assignedEmployee.name%>
+                    </li>
+                    <% }else{ %>
+                    <li class="list-group-item w-60 py-3 rounded-0">
+                        <button type="button" class="modal-open-button" data-bs-toggle="modal" data-bs-target="#assignEmployeeModal">Assign Employee</button>
+                    </li>
+                    <% } %>
+                </ul>
+                <ul class="list-group list-group-horizontal w-100 rounded-0">
+                    <li class="list-group-item w-40 py-3 rounded-0 d-flex align-items-center">Deleted</li>
+                    <li class="list-group-item w-60 py-3 rounded-0">
+                        <%=work.deleted%>
+                    </li>
+                </ul>
+                <ul class="list-group list-group-horizontal w-100 rounded-0">
+                    <li class="list-group-item w-40 py-3 rounded-0 d-flex align-items-center">Status</li>
+                    <li class="list-group-item w-60 py-3 rounded-0">
+                        <%=work.status%>
+                    </li>
+                </ul>
+                <ul class="list-group list-group-horizontal w-100 rounded-0">
+                    <li class="list-group-item w-40 py-3 rounded-0 d-flex align-items-center">Time</li>
+                    <% if(work.time){ %>
+                    <li class="list-group-item w-60 py-3 rounded-0">
+                        <%=work.time%> min
+                    </li>
+                    <% }else{ %>
+                    <li class="list-group-item w-60 py-3 rounded-0">ongoing</li>
+                    <% } %>
+                </ul>
+                <ul class="list-group list-group-horizontal w-100 rounded-0">
+                    <li class="list-group-item w-40 py-3 rounded-0 d-flex align-items-center">Amount</li>
+                    <% if(work.amount){ %>
+                    <li class="list-group-item w-60 py-3 rounded-0">
+                        ₹ <%=work.amount%>
+                    </li>
+                    <% }else{ %>
+                    <li class="list-group-item w-60 py-3 rounded-0">ongoing</li>
+                    <% } %>
+                </ul>
+                <div class="my-4 w-100 d-flex align-items-center justify-content-center">
+                    <button type="button" class="modal-open-button" data-bs-toggle="modal" data-bs-target="#editWorkModal">Edit Work</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="assignEmployeeModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Assign Employee</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/admin/works/<%=work.id%>/assign" method="post" class="w-100">
+                        <div class="row w-100 gx-0 gy-3 m-0 p-0">
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <select class="form-select" name="employee" required>
+                                        <option value="" selected>select employee</option>
+                                        <% employee.forEach((i)=>{ %>
+                                        <option value="<%=i.id%>-<%=i.name%>">
+                                            <%=i.name%>
+                                        </option>
+                                        <% }) %>
+                                    </select>
+                                    <label>Select Employee</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 w-100 d-flex align-items-center justify-content-end gap-3">
+                            <button type="button" class="modal-close-button" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="modal-save-button">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editWorkModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Edit Work</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/admin/works/<%=work.id%>/edit" method="post" class="w-100">
+                        <div class="row w-100 gx-0 gy-3 m-0 p-0">
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <select class="form-select" name="employee" required>
+                                        <option value="" selected>select status</option>
+                                        <option value="completed">completed</option>
+                                    </select>
+                                    <label>Select Work Status</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="date" class="form-control" name="date" placeholder="Completion Date" required>
+                                    <label>Completion Date</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" name="time" placeholder="Time Taken ( in min )" required>
+                                    <label>Time Taken ( in min )</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control" name="amount" placeholder="Amount" required>
+                                    <label>Amount</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 w-100 d-flex align-items-center justify-content-end gap-3">
+                            <button type="button" class="modal-close-button" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="modal-save-button">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="/js/adminNavbar.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.js"></script>
+    <script src="/datatable/datatable.js"></script>
+    <script src="/datatable/datatable.bootstrap.js"></script>
+    <script>
+        let navActive = document.querySelectorAll('.admin-works')
+        navActive.forEach((i) => {
+            i.classList.add('active')
+        })
+    </script>
+</body>
+
+</html>

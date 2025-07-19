@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account | Admin</title>
+    <link rel="shortcut icon" href="/image/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/datatable/datatable.css">
+    <link rel="stylesheet" href="/css/all.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="sidebar"></div>
+        <div class="content">
+            <div class="container-xxl">
+                <div class="header-container">
+                    <p class="header">Account</p>
+                </div>
+                <div class="w-100 mt-4 d-flex justify-content-center align-items-center">
+                    <button type="button" class="modal-open-button" data-bs-toggle="modal" data-bs-target="#addTransactionModal">Add Transaction</button>
+                </div>
+                <div class="mt-4 w-100 overflow-x-scroll">
+                    <table id="transactionTable" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Type</th>
+                                <th>Amount</th>
+                                <th>Description</th>
+                                <th>Date</th>
+                                <th>Credit / Debit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% transaction.forEach((i)=>{ %>
+                                <tr>
+                                    <td><%=i.id%></td>
+                                    <td><%=i.type%></td>
+                                    <td>₹ <%=i.amount%></td>
+                                    <td><%=i.description%></td>
+                                    <td><%=i.date%></td>
+                                    <% if(i.iscredit){ %>
+                                        <td>credit</td>
+                                    <% }else{ %>
+                                        <td>debit</td>
+                                    <% } %>
+                                </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addTransactionModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Add New Transaction</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/admin/account/addtransaction" method="post" class="w-100">
+                        <div class="row w-100 gx-0 gy-3 m-0 p-0">
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" name="type" placeholder="Transaction Type" required>
+                                    <label>Transaction Type</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control" name="amount" placeholder="Amount" required>
+                                    <label>Amount</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" name="description" placeholder="Description" required>
+                                    <label>Description</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="creditDebit" value="iscredit" required>
+                                    <label class="form-check-label">Credit</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="creditDebit" value="isdebit" required>
+                                    <label class="form-check-label">Debit</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="date" class="form-control" name="date" placeholder="Date" required>
+                                    <label>Date</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 w-100 d-flex align-items-center justify-content-end gap-3">
+                            <button type="button" class="modal-close-button" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="modal-save-button">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="/js/adminNavbar.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.js"></script>
+    <script src="/datatable/datatable.js"></script>
+    <script src="/datatable/datatable.bootstrap.js"></script>
+    <script>
+        let navActive = document.querySelectorAll('.admin-account')
+        document.addEventListener("DOMContentLoaded", () => {
+            new DataTable('#transactionTable');
+        })
+        navActive.forEach((i) => {
+            i.classList.add('active')
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Employee</title>
+    <link rel="shortcut icon" href="/image/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/all.css">
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+
+<body>
+
+    <section class="auth-container">
+        <form class="auth" action="/employee/login" method="post">
+            <div class="row w-100  m-0 p-2 p-sm-0 gy-2 gx-0">
+                <div class="col-12 col-sm-10 col-md-8 offset-sm-1 offset-md-2">
+                    <p class="text-center m-0 heading-black">Employee Login</p>
+                </div>
+                <div class="col-12 col-sm-10 col-md-8 offset-sm-1 offset-md-2">
+                    <div class="form-floating">
+                        <input type="text" class="form-control cust-input" name="username" placeholder="Username" required> 
+                        <label class="text-black"> Username</label>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-10 col-md-8 offset-sm-1 offset-md-2">
+                    <div class="form-floating">
+                        <input type="password" class="form-control cust-input" name="password" placeholder="Password" required>
+                        <label class="text-black"> Password</label>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-10 col-md-8 offset-sm-1 offset-md-2">
+                    <button class="submit-button" type="submit">Login</button>
+                </div>
+                <div class="col-12 col-sm-10 col-md-8 offset-sm-1 offset-md-2">
+                    <p class="m-0 p-0 text-center errorMsg"><%=msg%></p>
+                </div>
+            </div>
+        </form>
+        <div class="banner"></div>
+    </section>
+
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/js/script.js"></script>
+    <script>
+        var errorMsg = document.querySelector('.errorMsg')
+        document.addEventListener("DOMContentLoaded", () => {
+            setTimeout(() => {
+                errorMsg.style.color = "transparent"
+            }, 4000)
+        })
+    </script>
+</body>
+
+</html>
