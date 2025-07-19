@@ -62,7 +62,7 @@ app.use((req, res) => {
 });
 
 const port = process.env.PORT || 3000
-app.listen(port, "192.168.1.50", () => {
+app.listen(port, () => {
     console.log(`server started @ ${port}`)
     connectMongoose()
 })
