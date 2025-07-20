@@ -3,7 +3,7 @@ const router = express.Router()
 
 const validateClient = require('../middleware/validateClient')
 
-const { getHome, addWork, deleteWork, viewWork, getInvoice } = require('../controller/client')
+const { getHome, addWork, deleteWork, viewWork, getInvoice, viewInvoice } = require('../controller/client')
 
 router
     .route('/home')
@@ -24,5 +24,9 @@ router
 router
     .route('/invoice')
     .get(validateClient, getInvoice)
+
+router
+    .route('/:invoiceid/viewinvoice')
+    .get(viewInvoice)
 
 module.exports = router

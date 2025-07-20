@@ -74,3 +74,13 @@ exports.getInvoice = async (req, res) => {
         console.log(error)
     }
 }
+
+exports.viewInvoice = async (req, res) => {
+    try {
+        const { invoiceid } = req.params
+        const invoice = await Invoice.findOne({ id: invoiceid })
+        return res.render('client/viewInvoice', { invoice })
+    } catch (error) {
+        console.log(error)
+    }
+}

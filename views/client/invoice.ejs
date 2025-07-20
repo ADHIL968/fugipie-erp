@@ -29,6 +29,7 @@
                             <th>Date</th>
                             <th>Status</th>
                             <th>Payment Date</th>
+                            <th>View</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -47,6 +48,7 @@
                                 <% }else{ %>
                                     <td>not paid</td>
                                 <% } %>
+                                <td><a href="/<%=i.id%>/viewinvoice" class="view-profile-anchor">View</a></td>
                             </tr>
                         <% }) %>
                     </tbody>
