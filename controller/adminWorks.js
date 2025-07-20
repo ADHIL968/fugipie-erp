@@ -8,6 +8,7 @@ exports.getWorks = async (req, res) => {
         return res.render('works', { work })
     } catch (error) {
         console.log(error)
+        return res.render('error')
     }
 }
 
@@ -19,6 +20,7 @@ exports.viewWork = async (req, res) => {
         return res.render('viewWork', { work, employee })
     } catch (error) {
         console.log(error)
+        return res.render('error')
     }
 }
 
@@ -48,6 +50,7 @@ exports.editWork = async (req, res) => {
         return res.redirect(`/admin/works/${workid}/view`)
     } catch (error) {
         console.log(error)
+        return res.render('error')
     }
 }
 
@@ -64,5 +67,6 @@ exports.assignEmployee = async (req, res) => {
         return res.redirect(`/admin/works/${workid}/view`)
     } catch (error) {
         console.log(error)
+        return res.render('error')
     }
 }

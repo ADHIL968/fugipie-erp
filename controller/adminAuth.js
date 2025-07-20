@@ -6,6 +6,7 @@ exports.getLogin = (req, res) => {
         return res.render('login', { msg: '' })
     } catch (error) {
         console.log(error)
+        return res.render('error')
     }
 }
 
@@ -24,6 +25,7 @@ exports.login = async (req, res) => {
         return res.cookie('adminToken', token, { httpOnly: true }).redirect('/admin')
     } catch (error) {
         console.log(error)
+        return res.render('error')
     }
 }
 

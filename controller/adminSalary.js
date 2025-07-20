@@ -10,6 +10,7 @@ exports.getSalary = async (req, res) => {
         return res.render('salary', { salary, employee })
     } catch (error) {
         console.log(error)
+        return res.render('error')
     }
 }
 
@@ -45,5 +46,6 @@ exports.addSalary = async (req, res) => {
         return res.redirect('/admin/salary')
     } catch (error) {
         console.log(error)
+        return res.render('error')
     }
 }

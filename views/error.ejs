@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Error | Fugipie</title>
+    <link rel="shortcut icon" href="/image/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/all.css">
+    <style>
+        .error {
+            width: 100%;
+            height: 100dvh;
+            background: black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="error">
+        <p class="m-0 p-0 fs-2 fw-bold text-center text-white">Unexpected error occurred</p>
+        <p class="m-0 p-0 mt-2 fs-5 fw-medium text-center text-white">redirecting in <span class="timer">4</span></p>
+    </div>
+
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const timerDiv = document.querySelector('.timer');
+            let time = 5
+            const timer = setInterval(() => {
+                timerDiv.innerHTML = time
+                time -= 1
+                if (time < 0) {
+                    clearInterval(timer)
+                    window.location = window.location.origin
+                }
+            }, 1000);
+
+        })
+    </script>
+</body>
+
+</html>

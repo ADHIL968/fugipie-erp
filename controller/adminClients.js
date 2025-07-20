@@ -8,6 +8,7 @@ exports.getAdminClients = async (req, res) => {
         return res.render('clients', { client })
     } catch (error) {
         console.log(error)
+        return res.render('error')
     }
 }
 
@@ -25,6 +26,7 @@ exports.addClients = async (req, res) => {
         return res.redirect('/admin/clients')
     } catch (error) {
         console.log(error)
+        return res.render('error')
     }
 }
 
@@ -36,6 +38,7 @@ exports.getClientProfile = async (req, res) => {
         return res.render('clientProfile', { client, work })
     } catch (error) {
         console.log(error)
+        return res.render('error')
     }
 }
 
@@ -52,6 +55,7 @@ exports.editClientProfile = async (req, res) => {
         return res.redirect(`/admin/clients/${clientid}/profile`)
     } catch (error) {
         console.log(error)
+        return res.render('error')
     }
 }
 
@@ -79,5 +83,6 @@ exports.addWork = async (req, res) => {
         return res.redirect(`/admin/clients/${clientid}/profile`)
     } catch (error) {
         console.log(error)
+        return res.render('error')
     }
 }

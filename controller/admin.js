@@ -6,5 +6,6 @@ exports.getDashboard = async (req, res) => {
         return res.render('dashboard')
     } catch (error) {
         console.log(error)
+        return res.render('error')
     }
 }

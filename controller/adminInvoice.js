@@ -9,6 +9,7 @@ exports.getInvoice = async (req, res) => {
         return res.render('invoice', { invoice })
     } catch (error) {
         console.log(error)
+        return res.render('error')
     }
 }
 
@@ -19,6 +20,7 @@ exports.getAddInvoice = async (req, res) => {
         return res.render('addInvoice', { client, invoice })
     } catch (error) {
         console.log(error)
+        return res.render('error')
     }
 }
 
@@ -84,6 +86,7 @@ exports.addInvoice = async (req, res) => {
         return res.redirect('/admin/invoice')
     } catch (error) {
         console.log(error)
+        return res.render('error')
     }
 }
 
@@ -112,6 +115,7 @@ exports.payment = async (req, res) => {
         return res.redirect('/admin/invoice')
     } catch (error) {
         console.log(error)
+        return res.render('error')
     }
 }
 
@@ -122,5 +126,6 @@ exports.viewInvoice = async (req, res) => {
         return res.render('viewInvoice', { invoice })
     } catch (error) {
         console.log(error)
+        return res.render('error')
     }
 }

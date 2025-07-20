@@ -7,6 +7,7 @@ exports.getAccount = async (req, res) => {
         return res.render('account', { transaction })
     } catch (error) {
         console.log(error)
+        return res.render('error')
     }
 }
 
@@ -32,5 +33,6 @@ exports.addTransaction = async (req, res) => {
         return res.redirect('/admin/account')
     } catch (error) {
         console.log(error)
+        return res.render('error')
     }
 }

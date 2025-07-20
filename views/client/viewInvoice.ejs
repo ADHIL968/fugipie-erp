@@ -26,16 +26,11 @@
                 <button class="view-profile-anchor p-3" onclick="downloadInvoice()">Download Invoice</button>
             </div>
             <iframe id="pdfViewer" class="mt-4" style="width: 100%; height: 842px;"></iframe>
-
         </div>
     </div>
 
-    <script src="/js/adminNavbar.js"></script>
     <script src="/js/script.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/js/jquery.js"></script>
-    <script src="/datatable/datatable.js"></script>
-    <script src="/datatable/datatable.bootstrap.js"></script>
     <script>
         var invoice = <%-JSON.stringify(invoice)%>
         var pdfBytes

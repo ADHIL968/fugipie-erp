@@ -9,6 +9,7 @@ exports.getHome = async (req, res) => {
         return res.render('employee/home', { work, employee })
     } catch (error) {
         console.log(error)
+        return res.render('error')
     }
 }
 
@@ -19,5 +20,6 @@ exports.viewWork = async (req, res) => {
         return res.render('employee/viewWork', { work })
     } catch (error) {
         console.log(error)
+        return res.render('error')
     }
 }
