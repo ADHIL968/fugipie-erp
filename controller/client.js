@@ -2,6 +2,7 @@ const generateid = require('../utils/generateId')
 const generateDate = require('../utils/generateDate')
 const Client = require('../model/Client')
 const Work = require('../model/Work')
+const Invoice = require('../model/Invoice')
 
 
 exports.getHome = async (req, res) => {
@@ -59,6 +60,16 @@ exports.viewWork = async (req, res) => {
         const { workid } = req.params
         const work = await Work.findOne({ id: workid })
         return res.render('client/viewWork', { work })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.getInvoice = async (req, res) => {
+    try {
+        const { id } = req.user
+        const invoice = await Invoice.find({ 'client.id': id })
+        return res.render('client/invoice', { invoice })
     } catch (error) {
         console.log(error)
     }
