@@ -83,6 +83,9 @@ exports.addInvoice = async (req, res) => {
             amount: parseFloat(amount),
             data: data,
         })
+        const finder = await Client.findOne({ id: clientid })
+        finder.pendingBalance = parseFloat(finder.pendingBalance) + parseFloat(amount)
+        await finder.save()
         return res.redirect('/admin/invoice')
     } catch (error) {
         console.log(error)
@@ -126,6 +129,9 @@ exports.deleteInvoice = async (req, res) => {
         finder.iscanceled = true
         finder.cancelReason = cancelReason
         await finder.save()
+        const client = await Client.findOne({ id: finder.client.id })
+        client.pendingBalance = parseFloat(client.pendingBalance) - parseFloat(finder.amount)
+        await client.save()
         return res.redirect('/admin/invoice')
     } catch (error) {
         console.log(error)

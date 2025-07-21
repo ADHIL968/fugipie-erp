@@ -38,13 +38,19 @@
                                 <td><%=i.id%></td>
                                 <td><%=i.amount%></td>
                                 <td><%=i.date%></td>
+
                                 <% if(i.ispaid){ %>
                                     <td>paid</td>
+                                <% }else if(i.iscanceled){ %>
+                                    <td>canceled</td>
                                 <% }else{ %>
                                     <td>not paid</td>
                                 <% } %>
+
                                 <% if(i.ispaid){ %> 
                                     <td><%=i.paidon%></td>
+                                <% }else if(i.iscanceled){ %>
+                                    <td>canceled</td>
                                 <% }else{ %>
                                     <td>not paid</td>
                                 <% } %>
