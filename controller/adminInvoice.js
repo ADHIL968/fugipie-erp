@@ -119,6 +119,20 @@ exports.payment = async (req, res) => {
     }
 }
 
+exports.deleteInvoice = async (req, res) => {
+    try {
+        const { invoiceid, cancelReason } = req.body
+        const finder = await Invoice.findOne({ id: invoiceid })
+        finder.iscanceled = true
+        finder.cancelReason = cancelReason
+        await finder.save()
+        return res.redirect('/admin/invoice')
+    } catch (error) {
+        console.log(error)
+        return res.render('error')
+    }
+}
+
 exports.viewInvoice = async (req, res) => {
     try {
         const { invoiceid } = req.params

@@ -33,6 +33,7 @@
                                 <th>Amount</th>
                                 <th>Date</th>
                                 <th>Status</th>
+                                <th>Cancel</th>
                                 <th>View</th>
                             </tr>
                         </thead>
@@ -43,13 +44,23 @@
                                 <td><%=i.client.name%></td>
                                 <td><%=i.amount%></td>
                                 <td><%=i.date%></td>
-                                <td>
-                                    <% if(i.ispaid){ %>
-                                    Paid on <%=i.paidon%>
-                                    <% }else{ %>
-                                    <button type="button" class="modal-open-button" data-bs-toggle="modal" data-bs-target="#markPaidModal" onclick="selectId('<%=i.id%>')">Mark as Paid</button>
-                                    <% } %>
-                                </td>
+
+                                <% if(!i.ispaid && !i.iscanceled){ %>
+                                <td><button type="button" class="modal-open-button" data-bs-toggle="modal" data-bs-target="#markPaidModal" onclick="selectId('<%=i.id%>')">Mark as Paid</button></td>
+                                <% }else if(i.iscanceled){ %>
+                                <td>canceled, <%=i.cancelReason%></td>
+                                <% }else{ %>
+                                <td>paid on <%=i.paidon%></td>
+                                <% } %>
+
+                                <% if(!i.iscanceled && !i.ispaid){ %>
+                                <td><button type="button" class="delete-anchor" data-bs-toggle="modal" data-bs-target="#deleteInvoiceModal" onclick="selectId('<%=i.id%>')">Delete</button></td>
+                                <% }else if(i.iscanceled){ %>
+                                    <td>canceled</td>
+                                <% }else{ %>
+                                    <td>paid</td>
+                                <% } %>
+
                                 <td><a href="/admin/invoice/<%=i.id%>/view" class="view-profile-anchor">view</a></td>
                             </tr>
                             <% }) %>
@@ -64,7 +75,7 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5">Add New Client</h1>
+                    <h1 class="modal-title fs-5">Mark As Paid</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -75,6 +86,34 @@
                                 <div class="form-floating">
                                     <input type="date" class="form-control" name="date" placeholder="Date" required>
                                     <label>Date of Payment</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 w-100 d-flex align-items-center justify-content-end gap-3">
+                            <button type="button" class="modal-close-button" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="modal-save-button">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteInvoiceModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Delete Invoice</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/admin/invoice/delete" method="post" class="w-100">
+                        <div class="row w-100 gx-0 gy-3 m-0 p-0">
+                            <div class="col-12">
+                                <input type="hidden" name="invoiceid">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" name="cancelReason" placeholder="Cancel Reason" required>
+                                    <label>Cancel Reason</label>
                                 </div>
                             </div>
                         </div>
@@ -104,7 +143,9 @@
         })
 
         function selectId(id) {
-            document.querySelector('[name="invoiceid"]').value = id
+            document.querySelectorAll('[name="invoiceid"]').forEach((i) => {
+                i.value = id
+            })
             return
         }
     </script>

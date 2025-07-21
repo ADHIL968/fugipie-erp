@@ -259,6 +259,8 @@ input[type="number"] {
     background: var(--close-button-color);
     padding: 5px 15px;
     border-radius: 3px;
+    outline: none;
+    border: none;
 
     &:hover {
         background: #b82c3a;

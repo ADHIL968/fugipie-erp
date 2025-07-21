@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const { getAddInvoice, addInvoice, getInvoice, payment, viewInvoice } = require('../controller/adminInvoice')
+const { getAddInvoice, addInvoice, getInvoice, payment, viewInvoice, deleteInvoice } = require('../controller/adminInvoice')
 
 router
     .route('/')
@@ -15,6 +15,10 @@ router
 router
     .route('/payment')
     .post(payment)
+
+router
+    .route('/delete')
+    .post(deleteInvoice)
 
 router
     .route('/:invoiceid/view')
