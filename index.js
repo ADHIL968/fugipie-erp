@@ -37,6 +37,7 @@ const validateClient = require('./middleware/validateClient')
 const validateEmployee = require('./middleware/validateEmployee')
 
 app.get('/', (req, res) => {
+    console.log(req.ip)
     return res.render('landing')
 })
 
