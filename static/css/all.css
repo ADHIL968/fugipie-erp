@@ -305,7 +305,7 @@ td {
 .header-container {
     padding: 12px;
     width: 100%;
-    background: #640D5F;
+    background: lightgray;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -315,7 +315,7 @@ td {
 }
 
 .header {
-    color: white;
+    color: black;
     font-weight: 600;
     letter-spacing: 3px;
     font-size: 22px;

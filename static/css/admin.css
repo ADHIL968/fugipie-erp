@@ -57,7 +57,7 @@
 
 .cust-navbar {
     display: block;
-    background: black;
+    background: #640D5F;
 }
 
 .nav-link {
@@ -66,11 +66,11 @@
 }
 
 .nav-link:hover {
-    color: var(--color-1) !important;
+    color: var(--open-button-color) !important;
 }
 
 .nav-link.active {
-    color: var(--color-1) !important;
+    color: var(--open-button-color) !important;
 }
 
 .navbar-logo {
