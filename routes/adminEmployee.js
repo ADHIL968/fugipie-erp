@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const { getEmployee, addEmployee, viewEmployeeProfile, editEmployeeProfile, addSalary } = require('../controller/adminEmployee')
+const { getEmployee, addEmployee, viewEmployeeProfile, editEmployeeProfile, addSalary, distributeSalary, viewSalary } = require('../controller/adminEmployee')
 
 router
     .route('/')
@@ -22,5 +22,9 @@ router
 router
     .route('/:employeeid/addsalary')
     .post(addSalary)
+
+router
+    .route('/:employeeid/distributesalary')
+    .post(distributeSalary)
 
 module.exports = router

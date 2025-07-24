@@ -106,7 +106,7 @@ exports.payment = async (req, res) => {
             id: generateid(),
             type: "work payment",
             amount: finder.amount,
-            description: "work payment",
+            description: `payment from ${client.name}`,
             date: `${day}-${month}-${year}`,
             day,
             month,

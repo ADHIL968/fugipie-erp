@@ -27,7 +27,10 @@ const employeeSchema = new mongoose.Schema({
             id: String,
             salary: String,
             amount: Number,
-            paymentDate: String,
+            paymentDate: {
+                type: String,
+                default: ""
+            },
             paid: {
                 type: Boolean,
                 default: false

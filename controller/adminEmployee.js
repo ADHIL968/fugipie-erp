@@ -1,6 +1,7 @@
 const generateid = require('../utils/generateId')
 const Employee = require('../model/Employee')
 const Work = require('../model/Work')
+const Transaction = require('../model/Transaction')
 
 exports.getEmployee = async (req, res) => {
     try {
@@ -37,7 +38,10 @@ exports.viewEmployeeProfile = async (req, res) => {
         const { employeeid } = req.params
         const employee = await Employee.findOne({ id: employeeid })
         const work = await Work.find({ 'assignedEmployee.id': employeeid })
-        return res.render('employeeProfile', { employee, work })
+        const unpaidSalary = employee.salary.filter((i) => {
+            return !i.paid
+        })
+        return res.render('employeeProfile', { employee, work, unpaidSalary })
     } catch (error) {
         console.log(error)
         return res.render('error')
@@ -66,14 +70,12 @@ exports.editEmployeeProfile = async (req, res) => {
 exports.addSalary = async (req, res) => {
     try {
         const { employeeid } = req.params
-        const { salary, amount, date } = req.body
-        const [year, month, day] = date.split('-')
+        const { salary, amount } = req.body
         const finder = await Employee.findOne({ id: employeeid })
         finder.salary.push({
             id: generateid(),
             salary,
-            amount,
-            paymentDate: `${day}-${month}-${year}`
+            amount
         })
         await finder.save()
         return res.redirect(`/admin/employee/${employeeid}/profile`)
@@ -83,3 +85,33 @@ exports.addSalary = async (req, res) => {
     }
 }
 
+exports.distributeSalary = async (req, res) => {
+    try {
+        const { employeeid } = req.params
+        const { salary, date } = req.body
+        const [salaryId, salaryName] = salary.split("-")
+        const [year, month, day] = date.split('-')
+        const finder = await Employee.findOne({ id: employeeid })
+        const findSalary = finder.salary.find((i) => {
+            return i.id == salaryId
+        })
+        findSalary.paymentDate = `${day}-${month}-${year}`
+        findSalary.paid = true
+        await finder.save()
+        await Transaction.create({
+            id: generateid(),
+            type: "salary",
+            amount: findSalary.amount,
+            description: `${finder.name} ${salaryName} salary`,
+            date: `${day}-${month}-${year}`,
+            day: day,
+            month: month,
+            year: year,
+            isdebit: true
+        })
+        return res.redirect(`/admin/employee/${employeeid}/profile`)
+    } catch (error) {
+        console.log(error)
+        return res.render('error')
+    }
+}
