@@ -63,3 +63,23 @@ exports.editEmployeeProfile = async (req, res) => {
     }
 }
 
+exports.addSalary = async (req, res) => {
+    try {
+        const { employeeid } = req.params
+        const { salary, amount, date } = req.body
+        const [year, month, day] = date.split('-')
+        const finder = await Employee.findOne({ id: employeeid })
+        finder.salary.push({
+            id: generateid(),
+            salary,
+            amount,
+            paymentDate: `${day}-${month}-${year}`
+        })
+        await finder.save()
+        return res.redirect(`/admin/employee/${employeeid}/profile`)
+    } catch (error) {
+        console.log(error)
+        return res.render('error')
+    }
+}
+

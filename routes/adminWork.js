@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const { getWorks, viewWork, editWork, assignEmployee } = require('../controller/adminWorks')
+const { getWorks, viewWork, editWork, assignEmployee, test } = require('../controller/adminWorks')
 
 router
     .route('/')
@@ -19,4 +19,7 @@ router
     .route('/:workid/assign')
     .post(assignEmployee)
 
+router
+    .route('/test')
+    .get(test)
 module.exports = router

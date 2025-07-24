@@ -70,3 +70,7 @@ exports.assignEmployee = async (req, res) => {
         return res.render('error')
     }
 }
+
+exports.test = (req, res) => {
+    return res.render('test')
+}

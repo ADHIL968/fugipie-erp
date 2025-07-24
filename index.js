@@ -23,7 +23,6 @@ const adminClientsRoute = require('./routes/adminClients')
 const adminWorkRoute = require('./routes/adminWork')
 const adminEmployeeRoute = require('./routes/adminEmployee')
 const adminInvoiceRoute = require('./routes/adminInvoice')
-const adminSalaryRoute = require('./routes/adminSalary')
 const adminAccountRoute = require('./routes/adminAccount')
 
 const clientAuthRoute = require('./routes/clientAuth')
@@ -33,21 +32,17 @@ const employeeAuthRoute = require('./routes/employeeAuth')
 const employeeRoute = require('./routes/employee')
 
 const validateAdmin = require('./middleware/validateAdmin')
-const validateClient = require('./middleware/validateClient')
 const validateEmployee = require('./middleware/validateEmployee')
 
 app.get('/', (req, res) => {
-    console.log(req.ip)
     return res.render('landing')
 })
-
 app.use('/admin', adminAuthRoute)
 app.use('/admin', validateAdmin, adminRoute)
 app.use('/admin/clients', validateAdmin, adminClientsRoute)
 app.use('/admin/works', validateAdmin, adminWorkRoute)
 app.use('/admin/employee', validateAdmin, adminEmployeeRoute)
 app.use('/admin/invoice', validateAdmin, adminInvoiceRoute)
-app.use('/admin/salary', validateAdmin, adminSalaryRoute)
 app.use('/admin/account', validateAdmin, adminAccountRoute)
 
 app.use('/employee', employeeAuthRoute)

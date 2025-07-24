@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Works | Admin</title>
+    <title>Test</title>
     <link rel="shortcut icon" href="/image/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/datatable/datatable.css">
@@ -35,26 +35,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <% work.forEach((i, index)=>{ %>
-                            <tr>
-                                <td><%=index+1%></td>
-                                <td><%=i.client.name%></td>
-                                <td><%=i.subject%></td>
-                                <td><%=i.urgency%></td>
-                                <td><%=i.date%></td>
-                                <td><%=i.assignedEmployee.name || "not assigned"%></td>
-                                <td><%=i.status%></td>
-                                <td>
-                                    <a href="/admin/works/<%=i.id%>/view" class="view-profile-anchor">View</a>
-                                </td>
-                            </tr>
-                            <% }) %>
+
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
+
 
     <script src="/js/adminNavbar.js"></script>
     <script src="/js/script.js"></script>
@@ -66,9 +54,6 @@
         let navActive = document.querySelectorAll('.admin-works')
         document.addEventListener("DOMContentLoaded", () => {
             new DataTable('#worksTable');
-        })
-        navActive.forEach((i) => {
-            i.classList.add('active')
         })
     </script>
 </body>

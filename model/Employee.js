@@ -21,7 +21,19 @@ const employeeSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    remarks: []
+    remarks: [],
+    salary: [
+        {
+            id: String,
+            salary: String,
+            amount: Number,
+            paymentDate: String,
+            paid: {
+                type: Boolean,
+                default: false
+            }
+        }
+    ]
 })
 
 employeeSchema.pre('save', async function (next) {
