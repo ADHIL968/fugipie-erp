@@ -3,7 +3,7 @@ navbar.classList.add('navbar', 'fixed-top', 'navbar-expand-lg', 'cust-navbar');
 navbar.innerHTML = `
     <div class="container-xxl">
         <a class="navbar-brand" href="/">
-            <img src="/image/logo-white.png" class="navbar-logo">
+            <img src="/image/logo-black.png" class="navbar-logo">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#cust-navbar" aria-controls="cust-navbar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

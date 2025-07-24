@@ -57,20 +57,20 @@
 
 .cust-navbar {
     display: block;
-    background: #640D5F;
+    background: #ede8f5;
 }
 
 .nav-link {
     font-size: 20px;
-    color: white;
+    color: black;
 }
 
 .nav-link:hover {
-    color: var(--open-button-color) !important;
+    color: var(--color-1) !important;
 }
 
 .nav-link.active {
-    color: var(--open-button-color) !important;
+    color: var(--color-1) !important;
 }
 
 .navbar-logo {

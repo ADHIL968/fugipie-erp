@@ -198,7 +198,7 @@ input[type="number"] {
 .modal-open-button {
     border: none;
     outline: none;
-    padding: 5px 20px;
+    padding: 8px 20px;
     text-align: center;
     background: var(--open-button-color);
     color: white;
@@ -213,7 +213,7 @@ input[type="number"] {
 .modal-close-button {
     border: none;
     outline: none;
-    padding: 5px 20px;
+    padding: 8px 20px;
     text-align: center;
     background: var(--close-button-color);
     color: white;
@@ -227,7 +227,7 @@ input[type="number"] {
 .modal-save-button {
     border: none;
     outline: none;
-    padding: 5px 20px;
+    padding: 8px 20px;
     text-align: center;
     background: green;
     color: white;
@@ -305,7 +305,7 @@ td {
 .header-container {
     padding: 12px;
     width: 100%;
-    background: lightgray;
+    background: #1167b1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -315,7 +315,7 @@ td {
 }
 
 .header {
-    color: black;
+    color: white;
     font-weight: 600;
     letter-spacing: 3px;
     font-size: 22px;
