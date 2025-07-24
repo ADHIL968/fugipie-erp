@@ -10,7 +10,7 @@ navbar.innerHTML = `
         </button>
         <div class="collapse navbar-collapse" id="cust-navbar" style="justify-content: end;">
             <div class="navbar-nav">
-                <a class="nav-link" href="/admin">Home</a>
+                <a class="nav-link admin-home" href="/admin">Home</a>
                 <a class="nav-link admin-works" href="/admin/works">Works</a>
                 <a class="nav-link admin-clients" href="/admin/clients">Clients</a>
                 <a class="nav-link admin-employee" href="/admin/employee">Employee</a>
