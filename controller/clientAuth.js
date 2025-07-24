@@ -6,7 +6,7 @@ exports.getLogin = (req, res) => {
         return res.render('client/login', { msg: '' })
     } catch (error) {
         console.log(error)
-        return res.render('error')
+        return res.render('client/error')
     }
 }
 
@@ -25,7 +25,7 @@ exports.login = async (req, res) => {
         return res.cookie('clientToken', token, { httpOnly: true }).redirect('/home')
     } catch (error) {
         console.log(error)
-        return res.render('error')
+        return res.render('client/error')
     }
 }
 
@@ -34,6 +34,6 @@ exports.logout = (req, res) => {
         return res.clearCookie('clientToken').redirect('/')
     } catch (error) {
         console.log(error)
-        return res.render('error')
+        return res.render('client/error')
     }
 }

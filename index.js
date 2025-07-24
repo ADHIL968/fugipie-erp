@@ -17,6 +17,10 @@ app.use(fileUpload({
 
 const connectMongoose = require('./config/database')
 
+const validateAdmin = require('./middleware/validateAdmin')
+const validateClient = require('./middleware/validateClient')
+const validateEmployee = require('./middleware/validateEmployee')
+
 const adminAuthRoute = require('./routes/adminAuth')
 const adminRoute = require('./routes/admin')
 const adminClientsRoute = require('./routes/adminClients')
@@ -31,12 +35,6 @@ const clientRoute = require('./routes/client')
 const employeeAuthRoute = require('./routes/employeeAuth')
 const employeeRoute = require('./routes/employee')
 
-const validateAdmin = require('./middleware/validateAdmin')
-const validateEmployee = require('./middleware/validateEmployee')
-
-app.get('/', (req, res) => {
-    return res.render('landing')
-})
 app.use('/admin', adminAuthRoute)
 app.use('/admin', validateAdmin, adminRoute)
 app.use('/admin/clients', validateAdmin, adminClientsRoute)
@@ -49,7 +47,7 @@ app.use('/employee', employeeAuthRoute)
 app.use('/employee', validateEmployee, employeeRoute)
 
 app.use('/', clientAuthRoute)
-app.use('/', clientRoute)
+app.use('/', validateClient, clientRoute)
 
 
 app.use((req, res) => {

@@ -13,7 +13,7 @@ exports.getHome = async (req, res) => {
         return res.render('client/home', { client, work })
     } catch (error) {
         console.log(error)
-        return res.render('error')
+        return res.render('client/error')
     }
 }
 
@@ -41,7 +41,7 @@ exports.addWork = async (req, res) => {
         return res.redirect('/home')
     } catch (error) {
         console.log(error)
-        return res.render('error')
+        return res.render('client/error')
     }
 }
 
@@ -54,7 +54,7 @@ exports.deleteWork = async (req, res) => {
         return res.redirect(`/${workid}/viewwork`)
     } catch (error) {
         console.log(error)
-        return res.render('error')
+        return res.render('client/error')
     }
 }
 
@@ -65,7 +65,7 @@ exports.viewWork = async (req, res) => {
         return res.render('client/viewWork', { work })
     } catch (error) {
         console.log(error)
-        return res.render('error')
+        return res.render('client/error')
     }
 }
 
@@ -76,7 +76,7 @@ exports.getInvoice = async (req, res) => {
         return res.render('client/invoice', { invoice })
     } catch (error) {
         console.log(error)
-        return res.render('error')
+        return res.render('client/error')
     }
 }
 
@@ -87,6 +87,6 @@ exports.viewInvoice = async (req, res) => {
         return res.render('client/viewInvoice', { invoice })
     } catch (error) {
         console.log(error)
-        return res.render('error')
+        return res.render('client/error')
     }
 }
