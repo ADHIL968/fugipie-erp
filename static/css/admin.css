@@ -58,6 +58,7 @@
 .cust-navbar {
     display: block;
     background: #bcbcbc;
+    z-index: 100;
 }
 
 .nav-link {
