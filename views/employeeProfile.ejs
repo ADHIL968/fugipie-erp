@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="/css/admin.css">
 
     <style>
-        @media (max-width:576px){
-            .modal-open-button{
+        @media (max-width:576px) {
+            .modal-open-button {
                 width: 100%;
             }
         }
@@ -264,7 +264,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="mt-4 w-100 overflow-x-scroll">
+                    <div class="table-responsive my-5">
                         <table id="salaryTable" class="table table-striped">
                             <thead>
                                 <tr>
@@ -281,7 +281,6 @@
                                     <td><%= i.paymentDate ? i.paymentDate : "not paid" %></td>
                                 </tr>
                                 <% }) %>
-
                             </tbody>
                         </table>
                     </div>

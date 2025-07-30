@@ -23,7 +23,7 @@
                 <div class="w-100 mt-4 d-flex justify-content-center align-items-center">
                     <a href="/admin/invoice/add" class="modal-open-button">Add Invoice</a>
                 </div>
-                <div class="mt-4 w-100 overflow-x-scroll">
+                <div class="table-responsive my-5">
                     <table id="invoiceTable" class="table table-striped">
                         <thead>
                             <tr>
@@ -55,9 +55,9 @@
                                 <% if(!i.iscanceled && !i.ispaid){ %>
                                 <td><button type="button" class="delete-anchor" data-bs-toggle="modal" data-bs-target="#deleteInvoiceModal" onclick="selectId('<%=i.id%>')">Delete</button></td>
                                 <% }else if(i.iscanceled){ %>
-                                    <td>canceled</td>
+                                <td>canceled</td>
                                 <% }else{ %>
-                                    <td>paid</td>
+                                <td>paid</td>
                                 <% } %>
 
                                 <td><a href="/admin/invoice/<%=i.id%>/view" class="view-profile-anchor">view</a></td>

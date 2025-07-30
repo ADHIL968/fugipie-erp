@@ -40,7 +40,7 @@
                 <li class="list-group-item w-40 rounded-0 py-3 fw-semibold">Contact Number</li>
                 <li class="list-group-item w-60 rounded-0 py-3 fw-semibold"><%=employee.contactNumber%></li>
             </ul>
-            <div class="my-4 w-100 overflow-x-scroll">
+            <div class="table-responsive my-5">
                 <table id="worksTable" class="table table-striped">
                     <thead>
                         <tr>
@@ -79,7 +79,6 @@
     <script src="/bootstrap/js/bootstrap.min.js"></script>
     <script src="/js/jquery.js"></script>
     <script src="/datatable/datatable.js"></script>
-    <script src="/datatable/datatable.bootstrap.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             new DataTable('#worksTable');

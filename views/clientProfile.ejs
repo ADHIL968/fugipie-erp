@@ -52,7 +52,7 @@
                     <button type="button" class="modal-open-button" data-bs-toggle="modal" data-bs-target="#editClientModal">Edit Profile</button>
                     <button type="button" class="modal-open-button" data-bs-toggle="modal" data-bs-target="#addWorkModal">Add New Work</button>
                 </div>
-                <div class="my-5 w-100 overflow-x-scroll">
+                <div class="table-responsive my-5">
                     <table id="clientTable" class="table table-striped">
                         <thead>
                             <tr>
@@ -83,7 +83,6 @@
             </div>
         </div>
     </div>
-
 
     <div class="modal fade" id="editClientModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -198,7 +197,6 @@
     <script src="/bootstrap/js/bootstrap.min.js"></script>
     <script src="/js/jquery.js"></script>
     <script src="/datatable/datatable.js"></script>
-    <script src="/datatable/datatable.bootstrap.js"></script>
     <script>
         let navActive = document.querySelectorAll('.admin-clients')
         document.addEventListener("DOMContentLoaded", () => {

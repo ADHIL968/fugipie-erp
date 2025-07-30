@@ -23,7 +23,7 @@
                 <div class="w-100 mt-4 d-flex justify-content-center align-items-center">
                     <button type="button" class="modal-open-button" data-bs-toggle="modal" data-bs-target="#addTransactionModal">Add Transaction</button>
                 </div>
-                <div class="mt-4 w-100 overflow-x-scroll">
+                <div class="table-responsive my-5">
                     <table id="transactionTable" class="table table-striped">
                         <thead>
                             <tr>
@@ -37,18 +37,18 @@
                         </thead>
                         <tbody>
                             <% transaction.forEach((i)=>{ %>
-                                <tr>
-                                    <td><%=i.id%></td>
-                                    <td><%=i.type%></td>
-                                    <td>₹ <%=i.amount%></td>
-                                    <td><%=i.description%></td>
-                                    <td><%=i.date%></td>
-                                    <% if(i.iscredit){ %>
-                                        <td>credit</td>
-                                    <% }else{ %>
-                                        <td>debit</td>
-                                    <% } %>
-                                </tr>
+                            <tr>
+                                <td><%=i.id%></td>
+                                <td><%=i.type%></td>
+                                <td>₹ <%=i.amount%></td>
+                                <td><%=i.description%></td>
+                                <td><%=i.date%></td>
+                                <% if(i.iscredit){ %>
+                                <td>credit</td>
+                                <% }else{ %>
+                                <td>debit</td>
+                                <% } %>
+                            </tr>
                             <% }) %>
                         </tbody>
                     </table>
@@ -118,7 +118,6 @@
     <script src="/bootstrap/js/bootstrap.min.js"></script>
     <script src="/js/jquery.js"></script>
     <script src="/datatable/datatable.js"></script>
-    <script src="/datatable/datatable.bootstrap.js"></script>
     <script>
         let navActive = document.querySelectorAll('.admin-account')
         document.addEventListener("DOMContentLoaded", () => {

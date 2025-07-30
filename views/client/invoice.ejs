@@ -20,7 +20,8 @@
                 <a href="/" class="modal-open-button py-2 px-5">Go back</a>
                 <a href="/employee/logout" class="delete-anchor py-2 px-5">Logout</a>
             </div>
-            <div class="mt-4 w-100 overflow-x-scroll">
+
+            <div class="table-responsive my-5">
                 <table id="invoiceTable" class="table table-striped">
                     <thead>
                         <tr>
@@ -34,28 +35,28 @@
                     </thead>
                     <tbody>
                         <% invoice.forEach((i)=>{ %>
-                            <tr>
-                                <td><%=i.id%></td>
-                                <td><%=i.amount%></td>
-                                <td><%=i.date%></td>
+                        <tr>
+                            <td><%=i.id%></td>
+                            <td><%=i.amount%></td>
+                            <td><%=i.date%></td>
 
-                                <% if(i.ispaid){ %>
-                                    <td>paid</td>
-                                <% }else if(i.iscanceled){ %>
-                                    <td>canceled</td>
-                                <% }else{ %>
-                                    <td>not paid</td>
-                                <% } %>
+                            <% if(i.ispaid){ %>
+                            <td>paid</td>
+                            <% }else if(i.iscanceled){ %>
+                            <td>canceled</td>
+                            <% }else{ %>
+                            <td>not paid</td>
+                            <% } %>
 
-                                <% if(i.ispaid){ %> 
-                                    <td><%=i.paidon%></td>
-                                <% }else if(i.iscanceled){ %>
-                                    <td>canceled</td>
-                                <% }else{ %>
-                                    <td>not paid</td>
-                                <% } %>
-                                <td><a href="/<%=i.id%>/viewinvoice" class="view-profile-anchor">View</a></td>
-                            </tr>
+                            <% if(i.ispaid){ %>
+                            <td><%=i.paidon%></td>
+                            <% }else if(i.iscanceled){ %>
+                            <td>canceled</td>
+                            <% }else{ %>
+                            <td>not paid</td>
+                            <% } %>
+                            <td><a href="/<%=i.id%>/viewinvoice" class="view-profile-anchor">View</a></td>
+                        </tr>
                         <% }) %>
                     </tbody>
                 </table>
@@ -71,7 +72,6 @@
     <script src="/bootstrap/js/bootstrap.min.js"></script>
     <script src="/js/jquery.js"></script>
     <script src="/datatable/datatable.js"></script>
-    <script src="/datatable/datatable.bootstrap.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             new DataTable('#invoiceTable');

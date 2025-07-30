@@ -280,12 +280,6 @@ input[type="number"] {
     border-radius: 3px;
 }
 
-th,
-td {
-    text-align: start !important;
-    padding: 15px !important;
-}
-
 .w-40 {
     width: 40%;
 }

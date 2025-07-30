@@ -23,7 +23,7 @@
                 <div class="mt-4 w-100 d-flex align-items-center justify-content-center">
                     <button type="button" class="modal-open-button" data-bs-toggle="modal" data-bs-target="#addEmployee">Add New Employee</button>
                 </div>
-                <div class="mt-4 w-100 overflow-x-scroll">
+                <div class="table-responsive my-5">
                     <table id="employeeTable" class="table table-striped">
                         <thead>
                             <tr>
@@ -113,7 +113,6 @@
     <script src="/bootstrap/js/bootstrap.min.js"></script>
     <script src="/js/jquery.js"></script>
     <script src="/datatable/datatable.js"></script>
-    <script src="/datatable/datatable.bootstrap.js"></script>
     <script>
         let navActive = document.querySelectorAll('.admin-employee')
         document.addEventListener("DOMContentLoaded", () => {
