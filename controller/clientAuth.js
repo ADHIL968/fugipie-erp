@@ -1,11 +1,8 @@
 const generateid = require('../utils/generateId')
 const Client = require('../model/Client')
 
-let a = 1
 exports.getLogin = (req, res) => {
     try {
-        console.log(a)
-        a++
         return res.render('client/login', { msg: '' })
     } catch (error) {
         console.log(error)
