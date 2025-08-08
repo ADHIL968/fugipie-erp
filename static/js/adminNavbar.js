@@ -20,7 +20,7 @@ navbar.innerHTML = `
         </div>
     </div>
 `
-document.body.append(navbar)
+document.body.prepend(navbar)
 
 
     // < nav class="navbar fixed-top navbar-expand-lg cust-navbar" >
