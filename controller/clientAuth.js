@@ -22,7 +22,7 @@ exports.login = async (req, res) => {
             return res.render('client/login', { msg: 'incorrect password' })
         }
         const token = finder.createClientToken()
-        return res.cookie('clientToken', token, { httpOnly: true }).redirect('/home')
+        return res.cookie('clientToken', token, { httpOnly: true }).redirect('/')
     } catch (error) {
         console.log(error)
         return res.render('client/error')

@@ -1,4 +1,9 @@
-.content{
+.content {
     width: 100%;
     background: white;
+}
+
+.navbar-logo {
+    display: block;
+    width: 200px;
 }

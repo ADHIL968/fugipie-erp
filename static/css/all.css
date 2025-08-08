@@ -28,6 +28,12 @@ input[type="number"] {
     font-family: Quicksand;
 }
 
+.adjust{
+    width: 100%;
+    background: transparent;
+    height: 80px;
+}
+
 /* text */
 
 .heading-black {
