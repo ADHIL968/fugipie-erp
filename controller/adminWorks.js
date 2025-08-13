@@ -39,14 +39,14 @@ exports.editWork = async (req, res) => {
         work.completed = true
         work.status = "completed"
         await work.save()
-        const client = await Client.findOne({ id: work.client.id })
-        if (client.credit > amount) client.credit -= amount
-        else {
-            let difference = parseFloat(amount) - parseFloat(client.credit)
-            client.credit = 0
-            client.pendingBalance += parseFloat(difference)
-        }
-        await client.save()
+        // const client = await Client.findOne({ id: work.client.id })
+        // if (client.credit > amount) client.credit -= amount
+        // else {
+        //     let difference = parseFloat(amount) - parseFloat(client.credit)
+        //     client.credit = 0
+        //     client.pendingBalance += parseFloat(difference)
+        // }
+        // await client.save()
         return res.redirect(`/admin/works/${workid}/view`)
     } catch (error) {
         console.log(error)
