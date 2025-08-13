@@ -94,7 +94,7 @@
                     <li class="list-group-item w-60 py-3 rounded-0">ongoing</li>
                     <% } %>
                 </ul>
-                <ul class="list-group list-group-horizontal w-100 rounded-0">
+                <ul class="mb-3 list-group list-group-horizontal w-100 rounded-0">
                     <li class="list-group-item w-40 py-3 rounded-0 d-flex align-items-center">Amount</li>
                     <% if(work.amount){ %>
                     <li class="list-group-item w-60 py-3 rounded-0">
@@ -104,9 +104,13 @@
                     <li class="list-group-item w-60 py-3 rounded-0">ongoing</li>
                     <% } %>
                 </ul>
+
+                <% if(!work.completed){ %>
                 <div class="my-4 w-100 d-flex align-items-center justify-content-center">
                     <button type="button" class="modal-open-button" data-bs-toggle="modal" data-bs-target="#editWorkModal">Edit Work</button>
                 </div>
+                <% } %>
+
             </div>
         </div>
     </div>
