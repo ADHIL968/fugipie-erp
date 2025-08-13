@@ -4,16 +4,11 @@ const app = express()
 app.set('view engine', 'ejs')
 
 const cookieParser = require('cookie-parser')
-const fileUpload = require('express-fileupload')
 
 app.use(cookieParser())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(express.static('static'))
-app.use(fileUpload({
-    useTempFiles: true,
-    tempFileDir: '/tmp/'
-}));
 
 const connectMongoose = require('./config/database')
 
