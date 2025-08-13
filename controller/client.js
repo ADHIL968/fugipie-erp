@@ -38,7 +38,7 @@ exports.addWork = async (req, res) => {
             month,
             year
         })
-        return res.redirect('/home')
+        return res.redirect('/')
     } catch (error) {
         console.log(error)
         return res.render('client/error')
